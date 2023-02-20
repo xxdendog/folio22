@@ -1,0 +1,553 @@
+@import '../node_modules/locomotive-scroll/src/locomotive-scroll.scss';
+
+@font-face {
+    font-family: 'Halvar Breitschrift';
+    src: url("../fonts/Halvar_Breitschrift-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: "Halvar Mittelschrift";
+    src: url("../fonts/Halvar_Mittelschrift-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Orelo";
+    src: url("../fonts/Orelo-Medium-Italic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+}
+
+:root {
+    --app-height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: (100vw / 1440);
+    @media (min-aspect-ratio: 16/9) {
+        font-size: (100vh / 810);
+    }
+}
+
+body {
+    background-color: #050505;
+    color: #fff;
+    font-family: "Halvar Mittelschrift", sans-serif;
+    font-weight: normal;
+    font-size: 16rem;
+    line-height: 1;
+    &.page__about {
+        .smooth__scroll {
+            background-color: #fff;
+            color: #000;
+        }
+        .cursor-inner {
+            stroke: #000;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+}
+
+menu {
+    mix-blend-mode: difference;
+    transition: opacity .3s ease-in-out;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 50rem auto;
+    width: 1340rem;
+    &.hide {
+        opacity: 0;
+    }
+    nav {
+        position: absolute;
+        top: 2rem;
+        right: 0;
+        left: 0;
+        font-family: "Halvar Breitschrift", sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 14rem;
+        li {
+            display: inline-block;
+            margin: 0 13rem;
+        }
+    }
+    .menu__logo {
+        display: inline-block;
+        z-index: 2;
+        position: relative;
+        font-family: "Halvar Breitschrift", sans-serif;
+        text-transform: uppercase;
+        font-size: 17rem;
+    }
+    .menu__social {
+        position: absolute;
+        top: -2rem;
+        right: 0;
+        a {
+            position: relative;
+            font-size: 19rem;
+            margin-left: 25rem;
+            &:not(:last-child):after {
+                content: '-';
+                position: absolute;
+                left: 25rem;
+            }
+        }
+    }
+}
+
+.smooth__scroll {
+    width: 100vw;
+    position: fixed;
+}
+
+.wrapper-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 1170rem;
+    height: 100vh;
+    height: var(--app-height);
+    margin: 0 auto;
+    .overlay {
+        width: 50%;
+    }
+}
+
+.overlay {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    fill: #050505;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: var(--app-height);
+    z-index: -1;
+}
+
+.cursor {
+	display: none;
+    width: 200rem;
+    height: 200rem;
+}
+
+@media (any-pointer: fine) {
+	.cursor {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: block;
+		pointer-events: none;
+		opacity: 0;
+	}
+	.cursor-inner {
+		fill: rgba(255,255,255,0);
+		stroke: #fff;
+		stroke-width: 1px;  
+	}
+}
+
+.title {
+    overflow: hidden;
+    font-family: "Halvar Breitschrift", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 100rem;
+    font-weight: 500;
+    i {
+        font-family: "Orelo", serif;
+        text-transform: none;
+        font-size: 144rem;
+    }
+}
+
+.text__l {
+    font-weight: normal;
+    font-size: 32rem;
+    line-height: 150%;
+}
+
+.link__hover {
+    display: inline-block;
+    span {
+        display: inline-block;
+        pointer-events: none;
+    }
+}
+
+#target {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.case {
+    position: relative;
+    pointer-events: none;
+    width: 1170rem;
+    padding: 135rem 0;
+    //width: 100%;
+    margin: 0 auto;
+}
+
+.case__open {
+    pointer-events: none;
+    width: 100%;
+    height: 100vh;
+    height: var(--app-height);
+    .case__fixed {
+        position: absolute;
+    }
+}
+
+.case__fixed {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 0 auto;
+        width: 1340rem;
+        height: 100vh;
+        height: var(--app-height);
+    }
+    .case__description {
+        position: absolute;
+        left: 63.13%;
+        padding-top: 320rem;
+        font-size: 19rem;
+        p {
+            overflow: hidden;
+            margin: 12rem 0;
+        }
+    }
+}
+
+.case__img {
+    position: relative;
+    z-index: 1;
+    pointer-events: all;
+    //width: 100%;
+    width: 49.23%;
+    height: 100vh;
+    height: var(--app-height);
+    //padding: 175rem 216rem;
+    img {
+        opacity: 0;
+        height: 100%;
+        object-fit: cover;
+    }
+    @media (max-width: 767px) and (orientation: portrait) {
+        width: 90%;
+    }
+}
+
+.case__cover {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    height: var(--app-height);
+    img {
+        pointer-events: all;
+        opacity: 0;
+        height: 100%;
+        object-fit: cover;
+    }
+    .overlay {
+        z-index: 100;
+    }
+}
+
+.scroll__arrow {
+    position: absolute;
+    bottom: 7vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 21rem;
+    animation: 2s cubic-bezier(.13, 1, .32, 1) 0s infinite slideArrow;
+}
+
+@keyframes slideArrow { 
+    0%   { transform:translate(0,-100%); opacity: 0;  }
+    90%  { opacity: 1;  }
+    100% { transform:translate(0,0); opacity: 0; }
+}
+
+.case__content {
+    position: relative;
+    width: 1002rem;
+    padding: 160rem 0;
+    margin: 0 auto;
+    img {
+        opacity: 0;
+        margin: 80rem 0;
+    }
+}
+
+.case__content__fullscreen {
+    position: relative;
+    width: 100vw;
+    .case__content_bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        img {
+            opacity: 0;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .inner {
+        position: relative;
+    }
+    img {
+        margin: 0;
+    }
+}
+
+.next__case {
+    margin: -160rem 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    height: var(--app-height);
+    text-align: center;
+    .case__description {
+        overflow: hidden;
+        pointer-events: none;
+        position: relative;
+        top: 68rem;
+        font-family: "Halvar Breitschrift", sans-serif;
+        text-transform: uppercase;
+    }
+    .title {
+        pointer-events: none;
+    }
+}
+
+.reveal {
+    position: relative;
+    display: inline-block;
+    .hover__reveal {
+        position: absolute;
+        z-index: -1;
+        width: 390rem;
+        height: 584rem;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0;
+    }
+    .hover__reveal__inner {
+        overflow: hidden;
+    }
+    
+    .hover__reveal__inner,
+    .hover__reveal__img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .hover__reveal__overlay {
+        z-index: 2;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 102%;
+        fill: #050505;
+    }
+    
+    .hover__reveal__img {
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+}
+
+.about__header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 1008rem;
+    height: 100vh;
+    height: var(--app-height);
+    margin: 0 auto;
+    .title {
+        margin: 0 0 28rem;
+        line-height: 96%;
+        i {
+            letter-spacing: -0.02em;
+        }
+        span {
+            display: inline-block;
+            overflow: hidden;
+            margin: -16rem 0;
+        }
+    }
+    .about__description {
+        font-size: 23rem;
+        line-height: 36rem;
+        text-align: center;
+    }
+    .scroll__arrow {
+        bottom: 130rem;
+    }
+}
+
+.about__info {
+    position: relative;
+    width: 1180rem;
+    margin: 0 auto;
+    padding: 100rem 0 100rem 256rem;
+    .about__awards {
+        position: relative;
+        padding: 66rem 0 66rem 340rem;
+        .about__awards__description {
+            position: absolute;
+            left: 0;
+            width: 25%;
+            font-size: 21rem;
+            line-height: 32rem;
+        }
+        .awards__item {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            border-top: 1px solid rgba(0,0,0,.2);
+            font-size: 19rem;
+            padding: 18rem 0;
+            span {
+                position: absolute;
+                left: 254rem;
+            }
+            &::after {
+                content: '';
+                transition: all .4s cubic-bezier(.13, 1, .32, 1);
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #000;
+                width: 0;
+                height: 1px;
+            }
+            &::before {
+                content:'';
+                position: absolute;
+                right: 0;
+                top: 21rem;
+                background-image: url('../img/arrow-link.svg');
+                background-size: 12rem 12rem;
+                height: 12rem;
+                width: 12rem;
+            }
+            &:hover {
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+.contact {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 1008rem;
+    margin: 0 auto;  
+    height: 100vh;
+    height: var(--app-height);
+    .title {
+        margin: 12vh 0 28rem;
+    }
+    .description {
+        margin: 0 auto;
+        font-size: 23rem;
+        line-height: 36rem;
+        text-align: center;
+        font-weight: normal;
+        line-height: 152%;
+        .s-word {
+            overflow: hidden;
+        }
+    }
+    .button {
+        margin-top: 46rem;
+        .button__text-inner {
+            display: block;
+        }
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 104rem;
+    height: 104rem;
+    margin: 0 auto;
+    border: 1px dashed #fff;
+    border-radius: 50%;
+    font-family: "Halvar Breitschrift", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14rem;
+    font-weight: 500;
+    span {
+        display: inline-block;
+    }
+}
