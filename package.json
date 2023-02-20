@@ -1,0 +1,19 @@
+{
+  "name": "folio_22",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "parcel": "npx parcel index.html --open chrome"
+  },
+  "keywords": [],
+  "author": "oleg <@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@barba/core": "^2.9.7",
+    "locomotive-scroll": "^4.1.4",
+    "three": "^0.138.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-glsl": "^2.8.2"
+  }
+}
